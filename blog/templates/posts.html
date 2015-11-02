@@ -1,0 +1,29 @@
+<h1>All Posts</h1>
+
+<table border="1">
+{% for post in posts %}
+<tr>
+<td>
+  <font size="20">{{ post.title }}</font>
+  <br />
+  {% for comment in post.comments.all %}
+  <li>{{ comment.body }}</li>
+  {% endfor %}
+</td>
+<td><font size="20">{{ post.text }}</font></td>
+</tr>
+{% endfor %}
+
+</table>
+<br />
+<form action="" method="post">
+  {% csrf_token %}
+
+  {{ form.title.errors }}
+  {{ form.title }}<br />
+
+  {{ form.text.errors }}
+  {{ form.text }}
+
+  <input type="submit" value="Hantar" />
+</form>

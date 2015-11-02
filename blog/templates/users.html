@@ -1,0 +1,10 @@
+<h1>All Users</h1>
+
+<table border="1">
+{% for user in users %}
+<tr>
+<td><font size="20">{{ user.username }}</font></td>
+<td><font size="20">{{ user.email }}</font></td>
+</tr>
+{% endfor %}
+</table>
