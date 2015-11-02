@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 from blog.models import Post
 
@@ -22,14 +23,13 @@ def show_index(request):
         context['form'] = form
         #import pdb;pdb.set_trace()
         if form.is_valid():
-            request.session['form_valid'] = username
             title = form.cleaned_data['title']
             text = form.cleaned_data['text']
             post = Post(title=title, text=text)
             post.author = user
             post.save()
 
-            return redirect('/posts/')
+            return redirect(reverse('posts-index'))
     else:
         form = PostForm()
         context['form'] = form
@@ -40,7 +40,7 @@ def show_index(request):
     #return HttpResponse(json.dumps(data), content_type='application/json')
     return render(request, 'posts.html', context)
 
-def show_user(request):
+def show_user(request, userid):
     username = request.GET.get('username', None)
     if request.session.get('form_valid', False):
         pass

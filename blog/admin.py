@@ -1,17 +1,17 @@
 from django.contrib import admin
 
-from blog.models import Post, Comment
+from blog.models import Doctor, Patient, Appointment
 
-class CommentInline(admin.StackedInline):
-    model = Comment
+class AppointmentInline(admin.StackedInline):
+    model = Appointment
 
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'text')
+class PatientAdmin(admin.ModelAdmin):
+    list_display = ('name',)
     inlines = [
-        CommentInline,
+        AppointmentInline,
     ]
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(Comment)
+admin.site.register(Patient, PatientAdmin)
+admin.site.register(Doctor)
 
 # Register your models here.
