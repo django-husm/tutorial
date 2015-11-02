@@ -22,6 +22,7 @@ def show_index(request):
         context['form'] = form
         #import pdb;pdb.set_trace()
         if form.is_valid():
+            request.session['form_valid'] = username
             title = form.cleaned_data['title']
             text = form.cleaned_data['text']
             post = Post(title=title, text=text)
@@ -41,6 +42,8 @@ def show_index(request):
 
 def show_user(request):
     username = request.GET.get('username', None)
+    if request.session.get('form_valid', False):
+        pass
 
     if username is not None:
         users = User.objects.filter(username=username)

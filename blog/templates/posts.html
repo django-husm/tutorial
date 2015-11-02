@@ -1,3 +1,7 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>All Posts</h1>
 
 {% if request.user.is_authenticated %}
@@ -31,3 +35,4 @@
 
   <input type="submit" value="Hantar" />
 </form>
+{% endblock %}

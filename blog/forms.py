@@ -2,7 +2,7 @@ from django import forms
 
 class PostForm(forms.Form):
     title = forms.CharField(required=True,
-            widget=forms.TextInput(attrs={'placeholder': 'Razmi'}))
+            widget=forms.TextInput(attrs={'placeholder': 'Razmi', 'class': 'form-control'}))
 
     text = forms.CharField(required=True)
 
