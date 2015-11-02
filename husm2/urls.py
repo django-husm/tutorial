@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^posts/$', 'blog.views.show_index'),
     url(r'^users/$', 'blog.views.show_user'),
     url(r'^admin/', include(admin.site.urls)),
+    url('^', include('django.contrib.auth.urls'))
 ]

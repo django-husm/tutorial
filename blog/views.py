@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
 
 from blog.models import Post
 
@@ -10,6 +11,7 @@ from django.http import HttpResponse
 
 from blog.forms import PostForm
 
+@login_required(login_url='/login/')
 @csrf_protect
 def show_index(request):
     user = User.objects.get(username='kamal')
